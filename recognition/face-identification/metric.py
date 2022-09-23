@@ -5,6 +5,13 @@ FRR (False Rejection Rate) — доля неправильно отклонён�
 FAR (False Acceptance Rate) — доля неправильно принятых imposter-попыток.
 '''
 
+def get_scores(data_y, protocol):
+    data_y = data_y / np.linalg.norm(data_y, axis=1)[:, np.newaxis]
+    scores = data_y @ data_y.T
+
+    return scores[protocol], scores[np.logical_not(protocol)]
+
+
 def calc_metrics(targets_scores, imposter_scores):
     min_score = np.minimum(np.min(targets_scores), np.min(imposter_scores))
     max_score = np.maximum(np.max(targets_scores), np.max(imposter_scores))
@@ -29,7 +36,6 @@ def calc_metrics(targets_scores, imposter_scores):
         dists[i] = dist
 
         k = np.abs(far - frr)
-
         if k < mink:
             mink = k
             eer = (far + frr) / 2

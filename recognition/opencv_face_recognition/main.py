@@ -7,7 +7,7 @@ def viewImage(image, name_of_window):
     cv2.destroyAllWindows()
     cv2.imwrite("image1.png", image)
 
-image_path = r"C:\Users\Sveta\projects\компьютер вижн\images\sveta_i_anya.jpg"
+image_path = ''
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 image = cv2.imread(image_path)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
