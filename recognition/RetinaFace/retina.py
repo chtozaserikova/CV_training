@@ -19,20 +19,9 @@ img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
   }
 }
 
-facial_area = faces[0]["facial_area"] 
-landmarks = faces[0]["landmarks"]
+# применяет выравнивание к обнаруженным лицам с помощью своей функции извлечения
+faces = RetinaFace.extract_faces(img_path = img_path, align = True)
 
-cv2.rectangle(img, (facial_area[2], facial_area[3]), (facial_area[0], facial_area[1]), (255, 255, 255), 1)
-#extract facial area 
-img = cv2.imread(img_path) 
-cv2.circle(img, tuple(landmarks["left_eye"]), 1, (0, 0, 255), -1) 
-cv2.circle(img, tuple(landmarks["right_eye"]), 1, (0, 0, 255), -1) 
-cv2.circle(img, tuple(landmarks["nose"]), 1, (0, 0, 255), -1) 
-cv2.circle(img, tuple(landmarks["mouth_left"]), 1, (0, 0, 255), -1) 
-cv2.circle(img, tuple(landmarks["mouthright"]), 1, (0, 0, 255), -1)
-cv2.imwrite("sveta_retina.jpg", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
+# cv2.imshow("result", face) 
+cv2.imwrite("sveta.jpg", cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
 print(faces)
-
-faces = RetinaFace.extract_faces(img_path = "img.jpg", align = True)
-for face in faces:
-  cv2.imshow(face)
