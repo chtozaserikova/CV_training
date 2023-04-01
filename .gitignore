@@ -2,4 +2,3 @@ recognition/__pycache__/
 venv/
 recognition/facenet/__pycache__/
 recognition/opencv/__pycache__/
-classification/numbers/datasets/

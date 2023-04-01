@@ -12,3 +12,5 @@ mtcnn
 torch
 torchvision
 scikit-image
+pandas
+seaborn
